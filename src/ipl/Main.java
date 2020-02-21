@@ -6,5 +6,6 @@ public class Main {
     Task1 t1=new Task1();
     t1.FindTotalMatchesPerYear();
     t1.MatchesWonByTeam();
+    t1.GetExtraRunsByTeam();
     }
 }

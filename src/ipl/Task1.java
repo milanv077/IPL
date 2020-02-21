@@ -17,7 +17,7 @@ public class Task1  {
     public void FindTotalMatchesPerYear() throws Exception {
 
        Database d=new Database();
-       Map<Integer,ArrayList> map=d.database();
+       Map<Integer,ArrayList> map=d.databaseMatches();
        TreeMap<String,Integer> Matches=new TreeMap<String,Integer>();
 
     for(Map.Entry<Integer,ArrayList> v:map.entrySet())
@@ -37,7 +37,7 @@ public class Task1  {
 
     public  void MatchesWonByTeam() throws Exception {
         Database d=new Database();
-        Map<Integer,ArrayList> map=d.database();
+        Map<Integer,ArrayList> map=d.databaseMatches();
         TreeMap<String,Integer> WonTeam=new TreeMap<String,Integer>();
 
         for(Map.Entry<Integer,ArrayList> v:map.entrySet())
@@ -57,6 +57,58 @@ public class Task1  {
 
 
     }
+    public void GetExtraRunsByTeam() throws Exception{
+
+        Database d=new Database();
+        Map<Integer,ArrayList> matches=d.databaseMatches();
+        Map<Integer,ArrayList> deliveries=d.databaseDeliveries();
+        ArrayList<String> matcherIdOf2016=new ArrayList<String>();
+
+        TreeMap<String,Integer> ExtraRunsByTeam=new TreeMap<String,Integer>();
+
+        String s="2016";
+        for(Map.Entry<Integer,ArrayList> m: matches.entrySet())
+        {
+            String t= matches.get(m.getKey()).get(1)+"";
+            if(t.equals(s))
+            {
+
+                String t2=matches.get(m.getKey()).get(0)+"";
+                matcherIdOf2016.add(t2);
+            }
+
+        }
+
+        for(Map.Entry<Integer,ArrayList> del: deliveries.entrySet())
+        {
+
+            if(matcherIdOf2016.contains(deliveries.get(del.getKey()).get(0)))
+            {
+
+                if(!ExtraRunsByTeam.containsKey(deliveries.get(del.getKey()).get(2)))
+                {
+                    int sum=Integer.parseInt(deliveries.get(del.getKey()).get(16).toString());
+
+                    ExtraRunsByTeam.put(deliveries.get(del.getKey()).get(2).toString(),sum);
+                }
+                else{
+
+                    int sum2=ExtraRunsByTeam.get(deliveries.get(del.getKey()).get(2).toString())+
+                            Integer.parseInt(deliveries.get(del.getKey()).get(16).toString());
+                    ExtraRunsByTeam.put(deliveries.get(del.getKey()).get(2).toString(),sum2);
+
+                }
+
+            }
+
+        }
+        System.out.println(ExtraRunsByTeam);
+
+
+
+
+    }
+
 
 
 
