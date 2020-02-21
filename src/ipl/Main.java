@@ -7,5 +7,6 @@ public class Main {
     t1.FindTotalMatchesPerYear();
     t1.MatchesWonByTeam();
     t1.GetExtraRunsByTeam();
+    t1.EconomicalBowler();
     }
 }

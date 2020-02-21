@@ -6,14 +6,15 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Database {
 
-    public HashMap<Integer, ArrayList> databaseMatches() throws Exception {
+    public LinkedHashMap<Integer, ArrayList> databaseMatches() throws Exception {
 
-        FileReader fr = new FileReader("/home/milan/Downloads/ipl/matches.csv");
+        FileReader fr = new FileReader("matches.csv");
         ArrayList year = new ArrayList<>();
-        HashMap<Integer, ArrayList> Database = new HashMap<Integer, ArrayList>();
+        LinkedHashMap<Integer, ArrayList> Database = new LinkedHashMap<Integer, ArrayList>();
         BufferedReader br = new BufferedReader(fr);
         String t1 = br.readLine();
         String t = "";
@@ -29,11 +30,11 @@ public class Database {
     }
 
 
-    public HashMap<Integer, ArrayList> databaseDeliveries() throws Exception {
+    public LinkedHashMap<Integer, ArrayList> databaseDeliveries() throws Exception {
 
-        FileReader fr = new FileReader("/home/milan/Downloads/ipl/deliveries.csv");
+        FileReader fr = new FileReader("deliveries.csv");
         ArrayList year = new ArrayList<>();
-        HashMap<Integer, ArrayList> Database = new HashMap<Integer, ArrayList>();
+        LinkedHashMap<Integer, ArrayList> Database = new LinkedHashMap<Integer, ArrayList>();
         BufferedReader br = new BufferedReader(fr);
         String t1 = br.readLine();
         String t = "";
